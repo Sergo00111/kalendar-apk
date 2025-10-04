@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь Мартина</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Календарь Мартина</h1>
+        
+        <div class="controls">
+            <div class="date-selectors">
+                <select id="yearSelect"></select>
+                <select id="monthSelect"></select>
+                <button onclick="goToToday()">Сегодня</button>
+            </div>
+            <button class="add-event-btn" onclick="showEventForm()">➕ Добавить запись</button>
+        </div>
+
+        <div class="calendar">
+            <div class="header">
+                <button id="prevMonth">◀</button>
+                <h2 id="currentMonth"></h2>
+                <button id="nextMonth">▶</button>
+            </div>
+            
+            <div class="week-days">
+                <div>Пн</div>
+                <div>Вт</div>
+                <div>Ср</div>
+                <div>Чт</div>
+                <div>Пт</div>
+                <div>Сб</div>
+                <div>Вс</div>
+            </div>
+            
+            <div class="days" id="calendarDays"></div>
+        </div>
+
+        <div class="event-modal" id="eventModal">
+            <div class="modal-content">
+                <h3>Сколько у Мартина Перепелок и яиц</h3>
+                <div class="selected-date" id="selectedDateDisplay"></div>
+                
+                <div class="cells-container">
+                    <div class="cell-section">
+                        <h4>🥚 Клетка 1</h4>
+                        <div class="input-group">
+                            <label>Перепелки:</label>
+                            <input type="number" id="cell1Birds" min="0" max="1000" placeholder="0-1000">
+                        </div>
+                        <div class="input-group">
+                            <label>Яйца:</label>
+                            <input type="number" id="cell1Eggs" min="0" max="100" placeholder="0-100">
+                        </div>
+                    </div>
+                    
+                    <div class="cell-section">
+                        <h4>🥚 Клетка 2</h4>
+                        <div class="input-group">
+                            <label>Перепелки:</label>
+                            <input type="number" id="cell2Birds" min="0" max="1000" placeholder="0-1000">
+                        </div>
+                        <div class="input-group">
+                            <label>Яйца:</label>
+                            <input type="number" id="cell2Eggs" min="0" max="100" placeholder="0-100">
+                        </div>
+                    </div>
+                    
+                    <div class="cell-section">
+                        <h4>🥚 Клетка 3</h4>
+                        <div class="input-group">
+                            <label>Перепелки:</label>
+                            <input type="number" id="cell3Birds" min="0" max="1000" placeholder="0-1000">
+                        </div>
+                        <div class="input-group">
+                            <label>Яйца:</label>
+                            <input type="number" id="cell3Eggs" min="0" max="100" placeholder="0-100">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="totals" id="totalsDisplay">
+                    <div>Всего перепелок: <span id="totalBirds">0</span></div>
+                    <div>Всего яиц: <span id="totalEggs">0</span></div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button class="save-btn" onclick="saveEvent()">💾 Сохранить</button>
+                    <button class="cancel-btn" onclick="closeEventModal()">❌ Отмена</button>
+                    <button class="delete-btn" onclick="deleteEvent()" style="display: none;" id="deleteBtn">🗑️ Удалить</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="events-section">
+            <h3>📋 История записей</h3>
+            <div class="events-filter">
+                <select id="filterMonth" onchange="filterEvents()">
+                    <option value="all">Все месяцы</option>
+                </select>
+                <select id="filterYear" onchange="filterEvents()">
+                    <option value="all">Все годы</option>
+                </select>
+            </div>
+            <div id="eventsContainer" class="events-container"></div>
+        </div>
+    </div>
+
+    <script src="static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "my-html-app",
+  "version": "1.0.0",
+  "description": "My HTML to APK App",
+  "scripts": {
+    "build": "echo 'Build completed'"
+  }
+}
